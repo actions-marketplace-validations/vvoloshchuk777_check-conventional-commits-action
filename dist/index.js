@@ -728,31 +728,31 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var lodash_get_1 = __webpack_require__(854);
 var axios_1 = __webpack_require__(545);
 var fetchCommits = function (context) { return __awaiter(void 0, void 0, void 0, function () {
     var commits, commitsURL, data, e_1;
-    return __generator(this, function (_a) {
-        switch (_a.label) {
+    var _a;
+    return __generator(this, function (_b) {
+        switch (_b.label) {
             case 0:
-                commits = Array.isArray((0, lodash_get_1.default)(context, 'payload.commits'));
+                commits = Array.isArray((_a = context === null || context === void 0 ? void 0 : context.payload) === null || _a === void 0 ? void 0 : _a.commits);
                 if (commits) {
                     return [2 /*return*/, context.payload.commits];
                 }
-                commitsURL = (0, lodash_get_1.default)(context, 'payload.pull_request.commits_url');
+                commitsURL = context.payload.pull_request.commits_url;
                 if (!commitsURL) return [3 /*break*/, 4];
-                _a.label = 1;
+                _b.label = 1;
             case 1:
-                _a.trys.push([1, 3, , 4]);
+                _b.trys.push([1, 3, , 4]);
                 return [4 /*yield*/, axios_1.default.get(commitsURL)];
             case 2:
-                data = (_a.sent()).data;
+                data = (_b.sent()).data;
                 if (Array.isArray(data)) {
                     return [2 /*return*/, data.map(function (item) { return item.commit; })];
                 }
                 return [3 /*break*/, 4];
             case 3:
-                e_1 = _a.sent();
+                e_1 = _b.sent();
                 return [2 /*return*/, []];
             case 4: return [2 /*return*/, []];
         }

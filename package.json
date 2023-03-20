@@ -7,8 +7,7 @@
   },
   "scripts": {
     "prebuild": "rm -rf ./dist",
-    "build": "webpack",
-    "build:new": "ncc build src/main.ts --out dist",
+    "build": "ncc build src/main.ts --out dist",
     "test": "jest",
     "format": "prettier --write \"src/**/*.ts\""
   },
