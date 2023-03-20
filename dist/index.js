@@ -741,13 +741,14 @@ var fetchCommits = function (context) { return __awaiter(void 0, void 0, void 0,
                     return [2 /*return*/, context.payload.commits];
                 }
                 commitsURL = context.payload.pull_request.commits_url;
+                (0, core_1.info)("url ".concat(commitsURL));
                 if (!commitsURL) return [3 /*break*/, 4];
                 _b.label = 1;
             case 1:
                 _b.trys.push([1, 3, , 4]);
                 return [4 /*yield*/, axios_1.default.get(commitsURL, {
                         headers: {
-                            Accept: 'application/vdn.github+json',
+                            Accept: 'application/vnd.github+json',
                             Authorization: "token ".concat((0, core_1.getInput)('GITHUB_TOKEN'))
                         }
                     })];
