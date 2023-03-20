@@ -1,7 +1,7 @@
 # Check Conventional Commits GitHub Action
 
-A simple GitHub action that checks commits to have at least one
-message following [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) specification.
+A simple GitHub action that checks commits to have at least one message
+following [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) specification.
 
 ### Usage
 
@@ -21,4 +21,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: vvoloshchuk777/check-conventional-commits-action@v1.0.0
+        with:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 ```

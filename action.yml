@@ -4,6 +4,10 @@ author: Viacheslav Voloshchuk <vvoloshchuk777@gmail.com>
 branding:
   icon: 'git-commit'
   color: 'green'
+inputs:
+  GITHUB_TOKEN:
+    description: "Github token"
+    required: true
 runs:
   using: node16
   main: dist/index.js

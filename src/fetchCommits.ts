@@ -1,11 +1,10 @@
 import axios from 'axios';
 import { Commit } from './types';
-import { info } from '@actions/core';
+import { error, getInput } from '@actions/core';
 
 const fetchCommits = async (context): Promise<Commit[]> => {
   // push commits
   const commits = Array.isArray(context?.payload?.commits);
-  info(`push commits: ${JSON.stringify(commits)}`);
   if (commits) {
     return context.payload.commits;
   }
@@ -13,17 +12,20 @@ const fetchCommits = async (context): Promise<Commit[]> => {
   // PR commits
   // Get a list of commits from the GH API:
   const commitsURL = context.payload.pull_request.commits_url;
-  info(`url: ${commitsURL}`);
   if (commitsURL) {
     try {
-      const { data } = await axios.get(commitsURL);
-      info(`data: ${data}`);
+      const { data } = await axios.get(commitsURL, {
+        headers: {
+          Accept: 'application/vdn.github+json',
+          Authorization: `token ${getInput('GITHUB_TOKEN')}`
+        }
+      });
 
       if (Array.isArray(data)) {
         return data.map(item => item.commit);
       }
     } catch (e) {
-      info(`catch: ${e}`);
+      error(`catch: ${e}`);
 
       return [];
     }

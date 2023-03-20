@@ -737,27 +737,29 @@ var fetchCommits = function (context) { return __awaiter(void 0, void 0, void 0,
         switch (_b.label) {
             case 0:
                 commits = Array.isArray((_a = context === null || context === void 0 ? void 0 : context.payload) === null || _a === void 0 ? void 0 : _a.commits);
-                (0, core_1.info)("push commits: ".concat(JSON.stringify(commits)));
                 if (commits) {
                     return [2 /*return*/, context.payload.commits];
                 }
                 commitsURL = context.payload.pull_request.commits_url;
-                (0, core_1.info)("url: ".concat(commitsURL));
                 if (!commitsURL) return [3 /*break*/, 4];
                 _b.label = 1;
             case 1:
                 _b.trys.push([1, 3, , 4]);
-                return [4 /*yield*/, axios_1.default.get(commitsURL)];
+                return [4 /*yield*/, axios_1.default.get(commitsURL, {
+                        headers: {
+                            Accept: 'application/vdn.github+json',
+                            Authorization: "token ".concat((0, core_1.getInput)('GITHUB_TOKEN'))
+                        }
+                    })];
             case 2:
                 data = (_b.sent()).data;
-                (0, core_1.info)("data: ".concat(data));
                 if (Array.isArray(data)) {
                     return [2 /*return*/, data.map(function (item) { return item.commit; })];
                 }
                 return [3 /*break*/, 4];
             case 3:
                 e_1 = _b.sent();
-                (0, core_1.info)("catch: ".concat(e_1));
+                (0, core_1.error)("catch: ".concat(e_1));
                 return [2 /*return*/, []];
             case 4: return [2 /*return*/, []];
         }
