@@ -1,5 +1,9 @@
 name: "Check Conventional Commits Action"
 description: "Ensures that at least one commit message is following the conventional-commits standard."
+author: Viacheslav Voloshchuk <vvoloshchuk777@gmail.com>
+branding:
+  icon: 'git-commit'
+  color: 'green'
 runs:
   using: node16
   main: dist/index.js
