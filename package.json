@@ -1,0 +1,38 @@
+{
+  "name": "check-conventional-commits",
+  "version": "1.0.0",
+  "main": "index.js",
+  "engines": {
+    "node": "16.x"
+  },
+  "scripts": {
+    "prebuild": "rm -rf ./dist",
+    "build": "webpack",
+    "test": "jest",
+    "format": "prettier --write \"src/**/*.ts\""
+  },
+  "author": "Viacheslav Voloshchuk <vvoloshchuk777@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@actions/core": "^1.2.3",
+    "@actions/exec": "^1.0.3",
+    "@actions/github": "^2.1.1",
+    "lodash.get": "^4.4.2",
+    "node-fetch": "^2.6.9",
+    "undici": "^5.21.0"
+  },
+  "devDependencies": {
+    "@types/babel__core": "7.1.19",
+    "@types/babel__traverse": "7.17.1",
+    "@types/jest": "^26.0.0",
+    "@types/node": "^17.0.41",
+    "@types/node-fetch": "^2.6.2",
+    "jest": "^26.0.1",
+    "node-polyfill-webpack-plugin": "^2.0.1",
+    "prettier": "^2.8.4",
+    "ts-loader": "^8.0.2",
+    "typescript": "^3.9.7",
+    "webpack": "^5.76.2",
+    "webpack-cli": "^5.0.1"
+  }
+}

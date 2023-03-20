@@ -1,0 +1,5 @@
+name: "Conventional Commits"
+description: "Ensures that at least one commit message is following the conventional-commits standard."
+runs:
+  using: node16
+  main: dist/index.js
