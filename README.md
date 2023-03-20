@@ -5,7 +5,7 @@ following [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
 
 ### Usage
 
-Latest version: `v1.0.0`
+Latest version: `v1.0.11`
 
 ```yml
 name: Conventional Commits
@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: vvoloshchuk777/check-conventional-commits-action@v1.0.0
+      - uses: vvoloshchuk777/check-conventional-commits-action@v1.0.11
         with:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 ```

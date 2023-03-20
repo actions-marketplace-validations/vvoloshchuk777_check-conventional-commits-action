@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { Commit } from './types';
-import { error, getInput, info } from '@actions/core';
+import { debug, error, getInput } from '@actions/core';
 
 const fetchCommits = async (context): Promise<Commit[]> => {
   // push commits
@@ -12,7 +12,7 @@ const fetchCommits = async (context): Promise<Commit[]> => {
   // PR commits
   // Get a list of commits from the GH API:
   const commitsURL = context.payload.pull_request.commits_url;
-  info(`url ${commitsURL}`);
+  debug(`url ${commitsURL}`);
   if (commitsURL) {
     try {
       const { data } = await axios.get(commitsURL, {
