@@ -1,5 +1,5 @@
 import get from 'lodash.get';
-import { request } from 'undici';
+import axios from 'axios';
 import { Commit } from './types';
 
 const fetchCommits = async (context): Promise<Commit[]> => {
@@ -14,9 +14,7 @@ const fetchCommits = async (context): Promise<Commit[]> => {
   const commitsURL = get(context, 'payload.pull_request.commits_url');
   if (commitsURL) {
     try {
-      const { body } = await request(commitsURL);
-
-      const data = await body;
+      const { data } = await axios.get(commitsURL);
 
       if (Array.isArray(data)) {
         return data.map(item => item.commit);
