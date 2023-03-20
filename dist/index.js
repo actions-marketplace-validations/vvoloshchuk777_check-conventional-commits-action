@@ -729,6 +729,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var axios_1 = __webpack_require__(545);
+var core_1 = __webpack_require__(393);
 var fetchCommits = function (context) { return __awaiter(void 0, void 0, void 0, function () {
     var commits, commitsURL, data, e_1;
     var _a;
@@ -736,10 +737,12 @@ var fetchCommits = function (context) { return __awaiter(void 0, void 0, void 0,
         switch (_b.label) {
             case 0:
                 commits = Array.isArray((_a = context === null || context === void 0 ? void 0 : context.payload) === null || _a === void 0 ? void 0 : _a.commits);
+                (0, core_1.info)("push commits: ".concat(JSON.stringify(commits)));
                 if (commits) {
                     return [2 /*return*/, context.payload.commits];
                 }
                 commitsURL = context.payload.pull_request.commits_url;
+                (0, core_1.info)("url: ".concat(commitsURL));
                 if (!commitsURL) return [3 /*break*/, 4];
                 _b.label = 1;
             case 1:
@@ -747,12 +750,14 @@ var fetchCommits = function (context) { return __awaiter(void 0, void 0, void 0,
                 return [4 /*yield*/, axios_1.default.get(commitsURL)];
             case 2:
                 data = (_b.sent()).data;
+                (0, core_1.info)("data: ".concat(data));
                 if (Array.isArray(data)) {
                     return [2 /*return*/, data.map(function (item) { return item.commit; })];
                 }
                 return [3 /*break*/, 4];
             case 3:
                 e_1 = _b.sent();
+                (0, core_1.info)("catch: ".concat(e_1));
                 return [2 /*return*/, []];
             case 4: return [2 /*return*/, []];
         }
